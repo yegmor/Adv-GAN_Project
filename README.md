@@ -1,4 +1,4 @@
-# advGAN_pytorch
+# advGAN_pytorch: https://github.com/mathcbc/advGAN_pytorch
 a Pytorch implementation of the paper "Generating Adversarial Examples with Adversarial Networks" (advGAN).
 
 ## training the target model
@@ -10,7 +10,7 @@ python3 train_target_model.py
 ## training the advGAN
 
 ```shell
-python3 main.py
+python3 train_advGAN_model.py
 ```
 
 ## testing adversarial examples
@@ -23,4 +23,4 @@ python3 test_adversarial_examples.py
 
 **attack success rate** in the MNIST test set: **99%**
 
-**NOTE:** My implementation is a little different from the paper, because I add a clipping trick.
+**NOTE:** This implementation is a little different from the paper, because a clipping trick has been added.

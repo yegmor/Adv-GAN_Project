@@ -1,57 +1,98 @@
+# Modified from https://github.com/mathcbc/advGAN_pytorch/blob/master/train_target_model.py
+
 import torch
-import torchvision.datasets
-import torchvision.transforms as transforms
-from torch.utils.data import DataLoader
+import torch.optim as optim
 import torch.nn.functional as F
-from models import  MNIST_target_net
+from target_models import  MNIST_target_net
+import utils
+
+
+LOG_INTERVAL = 1
+
+
+def train_target_model(train_dataloader, training_parameters):
+    target_model = MNIST_target_net().to(device)
+    print(target_model)
+
+    target_model.train()
+    opt_model = optim.Adam(target_model.parameters(),
+                           lr=training_parameters["LEARNING_RATE"])
+
+    history = {"train_losses": [], "train_counter": []}
+    for epoch in range(training_parameters["EPOCHS"]):
+        loss_epoch = 0
+
+        if epoch == 20:
+            opt_model = optim.Adam(target_model.parameters(), 
+                                   lr=training_parameters["LEARNING_RATE"]/10)
+
+        for data in train_dataloader:
+            train_imgs, train_labels = data
+            train_imgs, train_labels = train_imgs.to(device), train_labels.to(device)
+
+            logits_model = target_model(train_imgs)
+
+            loss_model = F.cross_entropy(logits_model, train_labels)
+            loss_epoch += loss_model
+            
+            # Clear gradients for this training step
+            opt_model.zero_grad()
+            # Backpropagation, compute gradients
+            loss_model.backward()
+            # Apply gradients
+            opt_model.step()
+
+        history["train_counter"].append(epoch+1)
+        history["train_losses"].append(loss_epoch.item())
+
+        if epoch % LOG_INTERVAL == 0:
+            print('loss in epoch %d: %f' % (epoch, loss_epoch.item()))
+
+    return target_model, history
+
+
+def evaluate_target_model(target_model, test_dataloader, test_data_count):
+    # Evaluate test dataset on target model
+    target_model.eval()
+    num_correct = 0
+    for data in test_dataloader:
+        test_img, test_label = data
+        test_img, test_label = test_img.to(device), test_label.to(device)
+
+        pred_label = torch.argmax(target_model(test_img), 1)
+        num_correct += torch.sum(pred_label==test_label, 0)
+    print('accuracy in testing set: %f\n'%(num_correct.item()/test_data_count))
 
 
 if __name__ == "__main__":
-    use_cuda = True
-    image_nc = 1
-    batch_size = 256
-
+    training_parameters = {
+        "EPOCHS": 40,
+        "BATCH_SIZE": 256,
+        "LEARNING_RATE": 0.001
+    }
+    targeted_model_file_name = './models/MNIST_target_model.pth'
+    
     # Define what device we are using
-    print("CUDA Available: ", torch.cuda.is_available())
-    device = torch.device("cuda" if (use_cuda and torch.cuda.is_available()) else "cpu")
+    device = utils.define_device()
 
-    mnist_dataset = torchvision.datasets.MNIST('./dataset', train=True, transform=transforms.ToTensor(), download=True)
-    train_dataloader = DataLoader(mnist_dataset, batch_size=batch_size, shuffle=False, num_workers=1)
+    # Load MNIST train dataset
+    train_dataloader, train_data_count = utils.load_mnist(
+        is_train=True, batch_size=training_parameters["BATCH_SIZE"], shuffle=False)
+    
+    # Train the target model
+    target_model, history = train_target_model(train_dataloader, training_parameters)
 
-    # training the target model
-    target_model = MNIST_target_net().to(device)
-    target_model.train()
-    opt_model = torch.optim.Adam(target_model.parameters(), lr=0.001)
-    epochs = 40
-    for epoch in range(epochs):
-        loss_epoch = 0
-        if epoch == 20:
-            opt_model = torch.optim.Adam(target_model.parameters(), lr=0.0001)
-        for i, data in enumerate(train_dataloader, 0):
-            train_imgs, train_labels = data
-            train_imgs, train_labels = train_imgs.to(device), train_labels.to(device)
-            logits_model = target_model(train_imgs)
-            loss_model = F.cross_entropy(logits_model, train_labels)
-            loss_epoch += loss_model
-            opt_model.zero_grad()
-            loss_model.backward()
-            opt_model.step()
+    # Plot losses vs epoch
+    utils.plot_performance(history["train_counter"], history["train_losses"],
+                           plt_name="targeted_model_performance", y_name="target model's cross entropy loss")
 
-        print('loss in epoch %d: %f' % (epoch, loss_epoch.item()))
-
-    # save model
-    targeted_model_file_name = './MNIST_target_model.pth'
+    # Save model
     torch.save(target_model.state_dict(), targeted_model_file_name)
-    target_model.eval()
+    # torch.save(optimizer.state_dict(), '/results/optimizer.pth')
 
-    # MNIST test dataset
-    mnist_dataset_test = torchvision.datasets.MNIST('./dataset', train=False, transform=transforms.ToTensor(), download=True)
-    test_dataloader = DataLoader(mnist_dataset_test, batch_size=batch_size, shuffle=True, num_workers=1)
-    num_correct = 0
-    for i, data in enumerate(test_dataloader, 0):
-        test_img, test_label = data
-        test_img, test_label = test_img.to(device), test_label.to(device)
-        pred_lab = torch.argmax(target_model(test_img), 1)
-        num_correct += torch.sum(pred_lab==test_label,0)
-
-    print('accuracy in testing set: %f\n'%(num_correct.item()/len(mnist_dataset_test)))
+    # Load MNIST test dataset
+    test_dataloader, test_data_count = utils.load_mnist(
+        is_train=False, batch_size=training_parameters["BATCH_SIZE"], shuffle=True)
+        
+    # Evaluate test dataset on target model
+    evaluate_target_model(target_model, test_dataloader, test_data_count)
