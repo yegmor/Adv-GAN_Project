@@ -52,7 +52,7 @@ if __name__ == "__main__":
     
     train_num_correct = evaluate_target_model(target_model, train_dataloader)
     print('train_num_correct:', train_num_correct, '\ttotal train data:', train_data_count)
-    print('accuracy of adv imgs in training set: %f\n' %(train_num_correct/train_data_count))
+    print('attack success rate on training set: %f\n' %(100 - train_num_correct/train_data_count))
 
 
     # Test adversarial examples in MNIST testing dataset
@@ -61,3 +61,4 @@ if __name__ == "__main__":
     test_num_correct = evaluate_target_model(target_model, test_dataloader)
     print('test_num_correct:', test_num_correct, '\ttotal test data:', test_data_count)
     print('accuracy of adv imgs in testing set: %f\n'%(test_num_correct/test_data_count))
+    print('attack success rate on testing set: %f\n'%(100 - test_num_correct/test_data_count))
