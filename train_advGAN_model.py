@@ -1,7 +1,7 @@
 # Modified from https://github.com/mathcbc/advGAN_pytorch/blob/master/main.py
 
 import torch
-from advGAN import AdvGAN_Attack
+from advGAN import AdvGAN
 from target_models import MNIST_target_net
 import utils
 
@@ -32,7 +32,7 @@ if __name__ == "__main__":
         is_train=True, batch_size=training_parameters["BATCH_SIZE"], shuffle=True)
     
     # Train the AdvGAN model
-    advGAN = AdvGAN_Attack(device, targeted_model, model_num_labels, image_nc,
+    advGAN = AdvGAN(device, targeted_model, model_num_labels, image_nc,
                            BOX_MIN, BOX_MAX, training_parameters["LEARNING_RATE"], model_path=model_path)
     history = advGAN.train(train_dataloader, training_parameters["EPOCHS"])
 

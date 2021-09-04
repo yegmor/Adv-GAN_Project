@@ -3,6 +3,7 @@
 import torch
 import numpy as np
 import GAN_models
+import utils
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
@@ -25,7 +26,7 @@ def weights_init(m):
 """
 Network Architectures: discriminator and generator
 """
-class AdvGAN_Attack:
+class AdvGAN:
     def __init__(self, device, model, model_num_labels, image_nc, box_min, box_max, learning_rate, model_path):
         self.device = device
         self.model = model
@@ -50,13 +51,7 @@ class AdvGAN_Attack:
         self.opt_disc = optim.Adam(self.net_disc.parameters(), lr=self.learning_rate)
 
 
-    # Add a clipping trick
-    def create_adv_example(self, data, perturbation):
-        adv_images = torch.clamp(perturbation, -0.3, 0.3) + data
-        adv_images = torch.clamp(adv_images, self.box_min, self.box_max)
-        return adv_images
-
-
+    
     def train_batch(self, imgs, labels):
         # Optimizing and training the discriminator
         # Real inputs = actual images of the MNIST dataset
@@ -72,7 +67,8 @@ class AdvGAN_Attack:
             loss_disc_real.backward()
 
             perturbation = self.net_gen(imgs)
-            adv_image = self.create_adv_example(imgs, perturbation)
+            adv_image = utils.create_adv_example(imgs, perturbation, self.box_min, self.box_max)
+            
             pred_fake = self.net_disc(adv_image.detach())
             label_fake = torch.zeros_like(pred_fake, device=self.device)
 
@@ -116,8 +112,8 @@ class AdvGAN_Attack:
 
             adv_lambda = 10
             pert_lambda = 1
-            loss_G = adv_lambda * loss_adv + pert_lambda * loss_perturb
-            loss_G.backward()
+            loss_gen = adv_lambda * loss_adv + pert_lambda * loss_perturb
+            loss_gen.backward()
             self.opt_gen.step()
 
         return loss_disc_GAN.item(), loss_gen_fake.item(), loss_perturb.item(), loss_adv.item()

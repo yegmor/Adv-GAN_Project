@@ -36,3 +36,11 @@ def plot_performance(counter, losses, plt_name, y_name):
     plt.clf()
     plt.cla()
     plt.close()
+
+
+# Add a clipping trick
+def create_adv_example(data, perturbation, box_min, box_max):
+    perturbation = torch.clamp(perturbation, -0.3, 0.3)
+    adv_images = perturbation + data
+    adv_images = torch.clamp(adv_images, box_min, box_max)
+    return adv_images

@@ -53,15 +53,17 @@ def train_target_model(train_dataloader, training_parameters):
 
 def evaluate_target_model(target_model, test_dataloader, test_data_count):
     # Evaluate test dataset on target model
-    target_model.eval()
     num_correct = 0
     for data in test_dataloader:
         test_img, test_label = data
         test_img, test_label = test_img.to(device), test_label.to(device)
 
         pred_label = torch.argmax(target_model(test_img), 1)
-        num_correct += torch.sum(pred_label==test_label, 0)
+        num_correct += torch.sum(pred_label == test_label, 0)
+
+    print('num_correct: ', num_correct.item())
     print('accuracy in testing set: %f\n'%(num_correct.item()/test_data_count))
+    return num_correct
 
 
 if __name__ == "__main__":
@@ -95,4 +97,5 @@ if __name__ == "__main__":
         is_train=False, batch_size=training_parameters["BATCH_SIZE"], shuffle=True)
         
     # Evaluate test dataset on target model
-    evaluate_target_model(target_model, test_dataloader, test_data_count)
+    target_model.eval()
+    num_correct = evaluate_target_model(target_model, test_dataloader, test_data_count)
