@@ -1,6 +1,7 @@
 # Generating Adversarial Examples using Adv-GAN
 
 This project is adapted from  https://github.com/mathcbc/advGAN_pytorch, and it is a Pytorch implementation of the paper ["Generating Adversarial Examples with Adversarial Networks" (Adv-GAN)](https://arxiv.org/abs/1801.02610v5).
+
 **NOTE:** This implementation is a little different from the paper, because a clipping trick has been added.
 
 
