@@ -123,6 +123,5 @@ if __name__ == "__main__":
     # Evaluate test dataset on target model
     test_num_correct, test_loss = evaluate_target_model(target_model, test_dataloader)
     print('test_num_correct:', test_num_correct, '\ttotal test data:', test_data_count)
-    print('loss of adv imgs in testing set: %f' % (test_loss))
-    print('accuracy of adv imgs in testing set: %f' %(test_num_correct/test_data_count))
-    print('attack success rate on testing set: %f' %(100 - test_num_correct/test_data_count))
+    print('model loss on testing set: %f' % (test_loss))
+    print('model accuracy on testing set: %f' %(test_num_correct/test_data_count))
