@@ -22,4 +22,3 @@ python3 train_advGAN_model.py
 ```shell
 python3 test_adversarial_examples.py
 ```
-

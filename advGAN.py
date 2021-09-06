@@ -1,13 +1,11 @@
 # Modified from https://github.com/mathcbc/advGAN_pytorch/blob/master/advGAN.py
 
 import torch
-import numpy as np
 import GAN_models
 import utils
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-import os
 
 
 SAVING_INTERVAL = 20

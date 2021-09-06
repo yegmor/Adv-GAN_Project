@@ -1,7 +1,6 @@
 # Modified from https://github.com/mathcbc/advGAN_pytorch/blob/master/models.py
 
 import torch.nn as nn
-import torch.nn.functional as F
 
 
 class Generator(nn.Module):

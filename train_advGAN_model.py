@@ -36,13 +36,28 @@ if __name__ == "__main__":
                            BOX_MIN, BOX_MAX, training_parameters["LEARNING_RATE"], model_path=model_path)
     history = advGAN.train(train_dataloader, training_parameters["EPOCHS"])
 
-    # Plot losses vs epoch
-    utils.plot_performance(history["counter"], history["disc_losses"],
-                           plt_name="discriminator_GAN_model_performance", y_name="discriminator's mse loss")
-    utils.plot_performance(history["counter"], history["gen_losses"],
-                           plt_name="generator_GAN_model_performance", y_name="generator's mse loss")
-    utils.plot_performance(history["counter"], history["perturb_losses"],
-                           plt_name="perturbation_GAN_model_performance", y_name="perturbation's loss")
-    utils.plot_performance(history["counter"], history["adv_losses"],
-                           plt_name="adversarial_GAN_model_performance", y_name="adversarial's loss")
-
+    # Plots
+    utils.plot_performance(history["counter"],
+                           data=[history["disc_losses"], history["gen_losses"],
+                                 history["perturb_losses"], history["adv_losses"]],
+                           plt_names=["discriminator's mse loss", "generator's mse loss",
+                                      "perturbation's loss", "adversarial's loss"],
+                           fig_name="GAN_model_performance",
+                           y_name="loss")
+    utils.plot_performance(history["counter"],
+                           data=[history["disc_losses"], history["gen_losses"]],
+                           plt_names=["discriminator's mse loss", "generator's mse loss"],
+                           fig_name="discriminator_generator_GAN_model_performance",
+                           y_name="mse loss")
+    utils.plot_performance(history["counter"],
+                           data=[history["perturb_losses"]],
+                           plt_names=["perturbation's loss"],
+                           fig_name="perturbation_GAN_model_performance",
+                           y_name="perturbation's loss",
+                           colors=['mediumvioletred'])
+    utils.plot_performance(history["counter"],
+                           data=[history["adv_losses"]],
+                           plt_names=["adversarial's loss"],
+                           fig_name="adversarial_GAN_model_performance",
+                           y_name="adversarial's loss",
+                           colors=['crimson'])
