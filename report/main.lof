@@ -1,0 +1,29 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1-1}{\ignorespaces نمونه‌ای از خطا شبکه‌های عصبی در تشخیص نشانه‌های راهنمایی و رانندگی \cite {Evtimov2017RobustPA}}}{3}{figure.1.1}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2-1}{\ignorespaces ساختار یک شبکه مولد تقابلی \href {https://bytes860770954.wordpress.com/2020/08/22/what-are-generative-adversarial-networks-gans/}{منبع}}}{7}{figure.2.1}%
+\contentsline {figure}{\numberline {2-2}{\ignorespaces تصویرسازی روند عملکرد یک شبکه مولد تقابلی}}{8}{figure.2.2}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3-1}{\ignorespaces نمونه‌ای از اعمال الگوریتم علامت گرادیان سریع \cite {Goodfellow2015ExplainingAH}}}{11}{figure.3.1}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4-1}{\ignorespaces نمای کلی شبکه \lr {Adv-GAN} \cite {Xiao2018GeneratingAE}}}{14}{figure.4.1}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5-1}{\ignorespaces معماری شبکه هدف}}{18}{figure.5.1}%
+\contentsline {figure}{\numberline {5-2}{\ignorespaces معماری بخش‌ کدگزار شبکه مولد}}{19}{figure.5.2}%
+\contentsline {figure}{\numberline {5-3}{\ignorespaces معماری یک بلوک \lr {Resnet} در بخش گلوگاه شبکه مولد}}{20}{figure.5.3}%
+\contentsline {figure}{\numberline {5-4}{\ignorespaces معماری بخش کدگشا شبکه مولد}}{20}{figure.5.4}%
+\contentsline {figure}{\numberline {5-5}{\ignorespaces معماری شبکه تمییزدهنده}}{21}{figure.5.5}%
+\contentsline {figure}{\numberline {5-6}{\ignorespaces نمودار دقت شبکه هدف قبل از حمله}}{22}{figure.5.6}%
+\contentsline {figure}{\numberline {5-7}{\ignorespaces نمودار ضرر شبکه هدف قبل از حمله}}{23}{figure.5.7}%
+\contentsline {figure}{\numberline {5-8}{\ignorespaces عملکرد شبکه هدف بر روی داده \textbf {تست} قبل از حمله}}{23}{figure.5.8}%
+\contentsline {figure}{\numberline {5-9}{\ignorespaces نمودار ضرر مولد و تمییز دهنده شبکه \lr {Adv-GAN}}}{24}{figure.5.9}%
+\contentsline {figure}{\numberline {5-10}{\ignorespaces نمودار ضرر دستکاری شبکه \lr {Adv-GAN}}}{25}{figure.5.10}%
+\contentsline {figure}{\numberline {5-11}{\ignorespaces نمودار ضرر تقابلی شبکه \lr {Adv-GAN}}}{26}{figure.5.11}%
+\contentsline {figure}{\numberline {5-12}{\ignorespaces نمودار همه ضررهای شبکه \lr {Adv-GAN}}}{27}{figure.5.12}%
+\contentsline {figure}{\numberline {5-13}{\ignorespaces عملکرد شبکه هدف بر روی داده \textbf {آموزش} پس از حمله}}{28}{figure.5.13}%
+\contentsline {figure}{\numberline {5-14}{\ignorespaces عملکرد شبکه هدف بر روی داده \textbf {تست} پس از حمله}}{28}{figure.5.14}%
+\contentsline {figure}{\numberline {5-15}{\ignorespaces نمونه‌های تقابلی تولید شده از تصویر‌های داده \textbf {آموزش} به همراه کلاس اصلی و کلاس پیش‌بینی شده}}{29}{figure.5.15}%
+\contentsline {figure}{\numberline {5-16}{\ignorespaces نمونه‌های تقابلی تولید شده از تصویر‌های داده \textbf {تست} به همراه کلاس اصلی و کلاس پیش‌بینی شده}}{30}{figure.5.16}%
+\contentsline {figure}{\numberline {5-17}{\ignorespaces ماتریس درهم‌ریختگی برای نمونه‌های تقابلی تولید شده از تصویر‌های داده آموزش}}{31}{figure.5.17}%
+\contentsline {figure}{\numberline {5-18}{\ignorespaces ماتریس درهم‌ریختگی برای نمونه‌های تقابلی تولید شده از تصویر‌های داده تست}}{32}{figure.5.18}%
+\addvspace {10\p@ }

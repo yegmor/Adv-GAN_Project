@@ -1,0 +1,67 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+A level-1 auxiliary file: intro.aux
+Reallocating 'name_of_file' (item size: 1) to 15 items.
+A level-1 auxiliary file: background.aux
+Reallocating 'name_of_file' (item size: 1) to 16 items.
+A level-1 auxiliary file: relatedWork.aux
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+A level-1 auxiliary file: method.aux
+Reallocating 'name_of_file' (item size: 1) to 16 items.
+A level-1 auxiliary file: experiments.aux
+Reallocating 'name_of_file' (item size: 1) to 15 items.
+A level-1 auxiliary file: conclusion.aux
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+The style file: acm-fa.bst
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+Database file #1: MyReferences.bib
+Warning--entry type for "Heaven2019DLFool" isn't style-file defined
+--line 10 of file MyReferences.bib
+-- acm-fa.bst version 0.6 (2011/07/01) 
+-- This is a BibTeX style for XePersian: http://www.parsilatex.com
+
+Done.
+You've used 26 entries,
+            2725 wiz_defined-function locations,
+            809 strings with 11470 characters,
+and the built_in function-call counts, 13101 in all, are:
+= -- 938
+> -- 997
+< -- 0
++ -- 406
+- -- 378
+* -- 1116
+:= -- 2020
+add.period$ -- 77
+call.type$ -- 26
+change.case$ -- 267
+chr.to.int$ -- 0
+cite$ -- 26
+duplicate$ -- 254
+empty$ -- 615
+format.name$ -- 378
+if$ -- 3178
+int.to.chr$ -- 0
+int.to.str$ -- 26
+missing$ -- 535
+newline$ -- 239
+num.names$ -- 52
+pop$ -- 253
+preamble$ -- 1
+purify$ -- 241
+quote$ -- 0
+skip$ -- 144
+stack$ -- 0
+substring$ -- 357
+swap$ -- 52
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 4
+type$ -- 104
+warning$ -- 0
+while$ -- 63
+width$ -- 28
+write$ -- 326
+(There was 1 warning)

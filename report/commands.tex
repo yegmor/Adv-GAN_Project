@@ -1,0 +1,223 @@
+% در این فایل، دستورها و تنظیمات مورد نیاز، آورده شده است.
+%-------------------------------------------------------------------------------------------------------------------
+
+% در ورژن جدید زی‌پرشین برای تایپ متن‌های ریاضی، این سه بسته، حتماً باید فراخوانی شود
+\usepackage{tabularx,ragged2e}
+\newcolumntype{B}{>{\Centering}X}
+\newcolumntype{S}{>{\Centering\hsize=.4\hsize}X}
+\newcolumntype{M}{>{\Centering\hsize=.6\hsize}X}
+
+\usepackage{amsthm,amssymb,amsmath}
+% بسته‌ای برای تنطیم حاشیه‌های بالا، پایین، چپ و راست صفحه
+\usepackage[top=40mm, bottom=40mm, left=25mm, right=35mm]{geometry}
+% بسته‌‌ای برای ظاهر شدن شکل‌ها و تصاویر متن
+\usepackage{graphicx}
+% بسته‌ای برای رسم کادر
+\usepackage{framed} 
+% بسته‌‌ای برای چاپ شدن خودکار تعداد صفحات در صفحه «معرفی پایان‌نامه»
+\usepackage{lastpage}
+% بسته‌ و دستوراتی برای ایجاد لینک‌های رنگی با امکان جهش
+\usepackage[pagebackref=false,colorlinks,linkcolor=blue,citecolor=blue]{hyperref}
+% چنانچه قصد پرینت گرفتن نوشته خود را دارید، خط بالا را غیرفعال و  از دستور زیر استفاده کنید چون در صورت استفاده از دستور زیر‌‌، 
+% لینک‌ها به رنگ سیاه ظاهر خواهند شد که برای پرینت گرفتن، مناسب‌تر است
+%\usepackage[pagebackref=false]{hyperref}
+% بسته‌ لازم برای تنظیم سربرگ‌ها
+\usepackage{fancyhdr}
+%
+\usepackage{setspace}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{subfigure}
+\usepackage[subfigure]{tocloft}
+
+% بسته‌ای برای ظاهر شدن «مراجع» و «نمایه» در فهرست مطالب
+\usepackage[nottoc]{tocbibind}
+\usepackage[numbers]{natbib}
+% دستورات مربوط به ایجاد نمایه
+\usepackage{makeidx}
+\usepackage{graphicx} 
+\makeindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% دستورات مربوط به اضافه کردن استایل پایتون طبق لینک:
+%https://tex.stackexchange.com/questions/583310/insert-inline-code-block-in-latex-document
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{realboxes}
+
+\definecolor{gsbggray}     {rgb}{0.90,0.90,0.90} % background gray
+\definecolor{gsgray}       {rgb}{0.30,0.30,0.30} % gray
+\definecolor{gsgreen}      {rgb}{0.00,0.60,0.00} % green
+\definecolor{gsorange}     {rgb}{0.80,0.45,0.12} % orange
+\definecolor{gspeach}      {rgb}{1.00,0.90,0.71} % peach
+\definecolor{gspearl}      {rgb}{0.94,0.92,0.84} % pearl
+\definecolor{gsplum}       {rgb}{0.74,0.46,0.70} % plum
+\lstdefinestyle{vpython}{%                       % style for listings
+	backgroundcolor=\color{gsbggray},%             % background color
+	basicstyle=\footnotesize,%                     % default style
+	breakatwhitespace=true%                        % break at whitespace
+	breaklines=true,%                              % break long lines
+	captionpos=b,%                                 % position caption
+	classoffset=1,%                                % STILL DON'T UNDERSTAND THIS
+	commentstyle=\color{gsgray},%                  % font for comments
+	deletekeywords={print},%                       % delete keywords from the given language
+	emph={self,cls,@classmethod,@property},%       % words to emphasize
+	emphstyle=\color{gsorange}\itshape,%           % font for emphasis
+	escapeinside={(*@}{@*)},%                      % add LaTeX within your code
+	frame=tb,%                                     % frame style
+	framerule=2.0pt,%                              % frame thickness
+	framexleftmargin=5pt,%                         % extra frame left margin
+	%identifierstyle=\sffamily,%                    % style for identifiers
+	keywordstyle=\sffamily\color{gsplum},%         % color for keywords
+	language=Python,%                              % select language
+	linewidth=\linewidth,%                         % width of listings
+	morekeywords={%                                % VPython/GlowScript specific keywords
+		__future__,abs,acos,align,ambient,angle,append,append_to_caption,%
+		append_to_title,arange,arrow,asin,astuple,atan,atan2,attach_arrow,%
+		attach_trail,autoscale,axis,background,billboard,bind,black,blue,border,%
+		bounding_box,box,bumpaxis,bumpmap,bumpmaps,camera,canvas,caption,capture,%
+		ceil,center,clear,clear_trail,click,clone,CoffeeScript,coils,color,combin,%
+		comp,compound,cone,convex,cos,cross,curve,cyan,cylinder,data,degrees,del,%
+		delete,depth,descender,diff_angle,digits,division,dot,draw_complete,%
+		ellipsoid,emissive,end_face_color,equals,explog,extrusion,faces,factorial,%
+		False,floor,follow,font,format,forward,fov,frame,gcurve,gdisplay,gdots,%
+		get_library,get_selected,ghbars,global,GlowScript,graph,graphs,green,gvbars,%
+		hat,headlength,headwidth,height,helix,hsv_to_rgb,index,interval,keydown,%
+		keyup,label,length,lights,line,linecolor,linewidth,logx,logy,lower_left,%
+		lower_right,mag,mag2,magenta,make_trail,marker_color,markers,material,%
+		max,min,mouse,mousedown,mousemove,mouseup,newball,norm,normal,objects,%
+		offset,one,opacity,orange,origin,path,pause,pi,pixel_to_world,pixels,plot,%
+		points,pos,pow,pps,print,print_function,print_options,proj,purple,pyramid,%
+		quad,radians,radius,random,rate,ray,read_local_file,readonly,red,redraw,%
+		retain,rgb_to_hsv,ring,rotate,round,scene,scroll,shaftwidth,shape,shapes,%
+		shininess,show_end_face,show_start_face,sign,sin,size,size_units,sleep,%
+		smooth,space,sphere,sqrt,start,start_face_color,stop,tan,text,textpos,%
+		texture,textures,thickness,title,trail_color,trail_object,trail_radius,%
+		trail_type,triangle,trigger,True,twist,unbind,up,upper_left,upper_right,%
+		userpan,userspin,userzoom,vec,vector,vertex,vertical_spacing,visible,%
+		visual,vpython,VPython,waitfor,white,width,world,xtitle,yellow,yoffset,%
+		ytitle%
+	},%
+	morekeywords={print,None,TypeError},%          % additional keywords
+	morestring=[b]{"""},%                          % treat triple quotes as strings
+	numbers=left,%                                 % where to put line numbers
+	numbersep=10pt,%                               % how far line numbers are from code
+	numberstyle=\bfseries\tiny,%                   % set to 'none' for no line numbers
+	showstringspaces=false,%                       % show spaces in strings
+	showtabs=false,%                               % show tabs within strings
+	stringstyle=\color{gsgreen},%                  % color for strings
+	upquote=true,%                                 % how to typeset quotes
+}%
+
+\newcommand*{\pythonline}[1]{\Colorbox{gsbggray}{\lstinline[style=vpython]{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% فراخوانی بسته زی‌پرشین و تعریف قلم فارسی و انگلیسی
+\usepackage[extrafootnotefeatures]{xepersian}
+\settextfont[Scale=1]{XB Niloofar.ttf}
+\setlatintextfont[Scale=0.9]{Times New Roman}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% چنانچه می‌خواهید اعداد در فرمول‌ها، انگلیسی باشد، خط زیر را غیرفعال کنید
+%\setdigitfont[Scale=1]{XB Zar.ttf}%{Persian Modern}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% تعریف قلم‌های فارسی و انگلیسی اضافی برای استفاده در بعضی از قسمت‌های متن
+%\defpersianfont\titlefont[Scale=1]{XB Niloofar.ttf}
+% \defpersianfont\iranic[Scale=1.1]{XB Zar Oblique}%Italic}%
+% \defpersianfont\nastaliq[Scale=1.2]{IranNastaliq}
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% دستوری برای حذف کلمه «چکیده»
+\renewcommand{\abstractname}{}
+% دستوری برای حذف کلمه «abstract»
+%\renewcommand{\latinabstract}{}
+% دستوری برای تغییر نام کلمه «اثبات» به «برهان»
+\renewcommand\proofname{\textbf{برهان}}
+% دستوری برای تغییر نام کلمه «کتاب‌نامه» به «مراجع»
+\renewcommand{\bibname}{مراجع}
+% دستوری برای تعریف واژه‌نامه انگلیسی به فارسی
+\newcommand\persiangloss[2]{#1\dotfill\lr{#2}\\}
+% دستوری برای تعریف واژه‌نامه فارسی به انگلیسی 
+\newcommand\englishgloss[2]{#2\dotfill\lr{#1}\\}
+% تعریف دستور جدید «\پ» برای خلاصه‌نویسی جهت نوشتن عبارت «پروژه/پایان‌نامه/رساله»
+\newcommand{\پ}{پروژه/پایان‌نامه/رساله }
+
+%\newcommand\BackSlash{\char`\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\SepMark{-}
+
+% تعریف و نحوه ظاهر شدن عنوان قضیه‌ها، تعریف‌ها، مثال‌ها و ...
+\theoremstyle{definition}
+\newtheorem{definition}{تعریف}[section]
+\theoremstyle{theorem}
+\newtheorem{theorem}[definition]{قضیه}
+\newtheorem{lemma}[definition]{لم}
+\newtheorem{proposition}[definition]{گزاره}
+\newtheorem{corollary}[definition]{نتیجه}
+\newtheorem{remark}[definition]{ملاحظه}
+\theoremstyle{definition}
+\newtheorem{example}[definition]{مثال}
+
+%\renewcommand{\theequation}{\thechapter-\arabic{equation}}
+%\def\bibname{مراجع}
+\numberwithin{algorithm}{chapter}
+\def\listalgorithmname{فهرست الگوریتم‌ها}
+\def\listfigurename{فهرست شکل‌ها}
+\def\listtablename{فهرست ‌جدول‌ها}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% دستورهایی برای سفارشی کردن سربرگ صفحات
+% \newcommand{\SetHeader}{
+% \csname@twosidetrue\endcsname
+% \pagestyle{fancy}
+% \fancyhf{} 
+% \fancyhead[OL,EL]{\thepage}
+% \fancyhead[OR]{\small\rightmark}
+% \fancyhead[ER]{\small\leftmark}
+% \renewcommand{\chaptermark}[1]{%
+% \markboth{\thechapter-\ #1}{}}
+% }
+%%%%%%%%%%%%5
+%\def\MATtextbaseline{1.5}
+%\renewcommand{\baselinestretch}{\MATtextbaseline}
+\doublespacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% دستوراتی برای اضافه کردن کلمه «فصل» در فهرست مطالب
+
+\newlength\mylenprt
+\newlength\mylenchp
+\newlength\mylenapp
+
+\renewcommand\cftpartpresnum{\partname~}
+\renewcommand\cftchappresnum{\chaptername~}
+\renewcommand\cftchapaftersnum{:}
+
+\settowidth\mylenprt{\cftpartfont\cftpartpresnum\cftpartaftersnum}
+\settowidth\mylenchp{\cftchapfont\cftchappresnum\cftchapaftersnum}
+\settowidth\mylenapp{\cftchapfont\appendixname~\cftchapaftersnum}
+\addtolength\mylenprt{\cftpartnumwidth}
+\addtolength\mylenchp{\cftchapnumwidth}
+\addtolength\mylenapp{\cftchapnumwidth}
+
+\setlength\cftpartnumwidth{\mylenprt}
+\setlength\cftchapnumwidth{\mylenchp}	
+
+\makeatletter
+{\def\thebibliography#1{\chapter*{\refname\@mkboth
+   {\uppercase{\refname}}{\uppercase{\refname}}}\list
+   {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}
+   \rightmargin\labelwidth
+   \advance\rightmargin\labelsep
+   \advance\rightmargin\bibindent
+   \itemindent -\bibindent
+   \listparindent \itemindent
+   \parsep \z@
+   \usecounter{enumi}}
+   \def\newblock{}
+   \sloppy
+   \sfcode`\.=1000\relax}}
+\makeatother
